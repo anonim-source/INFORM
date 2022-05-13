@@ -4,6 +4,7 @@
 ### - web sitelerin dosyalarını bulabileceğiniz
 ### - web sitelerin admin sayfalarını bulabileceğiniz
 ### - Zararlı bağlantıları sorgulayabilceğiniz 
+### NOT= zararlı bağlantılar USOM (Ulusal Siber Olaylara Müdahale Merkezi) websitesinden sorgulanıyor
 ### bir program
 
 # Kurulum İçin Gerekli Kütüphaneler
