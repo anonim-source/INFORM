@@ -21,4 +21,4 @@ pip install sys
 ### Siz Burdan Hangi Seceneyi Kullanacaksanız Onu secin ve Talimatları İzleyin
 ![anasayfa resmi](https://i.hizliresim.com/s2t9bfl.png)
 
-# NOT = WEB SİTE LİNKLERİNİ DOĞRU YAZDIĞINIZDA 'yanlış yazdığınız ' HATASI VERİYORSA SİTENİN GÜVENLİK DUVARI İZİN VERMİYORDUR.
+ 
