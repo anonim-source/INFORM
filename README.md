@@ -5,9 +5,8 @@
 ### - web sitelerin admin sayfalarını bulabileceğiniz
 ### - Zararlı bağlantıları sorgulayabilceğiniz 
 ### NOT= zararlı bağlantılar USOM (Ulusal Siber Olaylara Müdahale Merkezi) websitesinden sorgulanıyor
-
-# Kurulum İçin Gerekli Kütüphaneler
 ### Öncelikle Pythonun Kurulu Olması Lazım 
+# Kurulum İçin Gerekli Kütüphaneler
 
 ``` pip install -r requirements.txt ```
 
