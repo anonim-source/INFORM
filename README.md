@@ -16,7 +16,7 @@ pip install sys
 pip install colorama
 ```
 ## yada 
-### pip install -r requirements.txt
+``` pip install -r requirements.txt ```
 # Nasıl Çalışır
 ## Terminalinizi acıp 
 `python3 inform.py` 
