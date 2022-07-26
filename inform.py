@@ -1,18 +1,20 @@
+
 import requests
 import json
 import sys
 from pyfiglet import Figlet
 import time
+from colorama import *
 
 
 # Başlık
 def index():
     f = Figlet(font='slant')
-    print(f.renderText('inform'))
+    print(Fore.GREEN + f.renderText('inform'))
 
 # ip hakkında bilgi
 def ip_info():
-    print("""
+    print(Fore.YELLOW+"""
     [1]Kendi İpinizi Sorgulama
     [2]Hedef İp Sorgulama
     [3]Anasayfaya Dönme
@@ -22,7 +24,7 @@ def ip_info():
         rq = requests.get("https://ipinfo.io/?token=b48af843c01309")
         respon = rq.json()
         for a in respon:
-            print(a,respon[a], sep="= :")
+            print(Fore.LIGHTMAGENTA_EX+a,respon[a], sep="= :")
         sec = input("cıktıyı kaydedelim mi (y/n) :")
         if sec == "y":
             dosya = open("kendiipim.txt","w")
@@ -40,7 +42,7 @@ def ip_info():
             s = reques.status_code
             req = reques.json()
             for i in req:
-                print(i,req[i], sep="= :")
+                print(Fore.LIGHTCYAN_EX+i,req[i], sep="= :")
             sec = input("cıktıyı kaydedelim mi (y/n) :")
             if sec == "y":
                 dosya = open(ip+".txt","w")
@@ -60,61 +62,65 @@ def ip_info():
         
 # Web sitedeki Dosyaları bulma
 def websitede_dosya():
-    link = input(str("site linkini girin örnek(exapmle.com):"))
-    fuzz = open("dosyabulma.txt","r")
-    fuzzread = fuzz.read()
-    bulunanlar=[]
     try:
-        for i in fuzzread.splitlines():
-            attack = requests.get("https://"+link + "/" + i)
-            respon = attack.status_code
-            if respon ==200:
-                print("-"*30)
-                print("Bulundu >",i)
-                print("link >",attack.url)
-                print("-"*30)
-                bulunanlar.append(attack.url)
-            else:
-                print("Bulunamadı >",i)
-        for bul in bulunanlar:
-            print("-"*30)
-            print("Bulunanlar >", bul)
-    except KeyboardInterrupt:
-        return index()
 
+        link = input(str("site linkini girin örnek(exapmle.com):"))
+        fuzz = open("dosyabulma.txt","r")
+        fuzzread = fuzz.read()
+        bulunanlar=[]
+        try:
+            for i in fuzzread.splitlines():
+                attack = requests.get("https://"+link + "/" + i)
+                respon = attack.status_code
+                if respon ==200:
+                    print("-"*30)
+                    print(Fore.LIGHTGREEN_EX+"Bulundu >",i)
+                    print(Fore.LIGHTGREEN_EX+"link >",attack.url)
+                    print("-"*30)
+                    bulunanlar.append(attack.url)
+                else:
+                    print(Fore.MAGENTA+"Bulunamadı >",i)
+            for bul in bulunanlar:
+                print("-"*30)
+                print("Bulunanlar >", bul)
+        except KeyboardInterrupt:
+            return index()
+    except:
+        return index()
 # sitelerin admin panelini bulma
 def admin_panel():
-    link = input("hedef link girin örnek(example.com) :")
-    dosya = open("links.txt","r+")
-    dosya_r = dosya.readlines()
-    dosya.close()
-    bulunan=[]
     try:
-        for  i in dosya_r:
-            request = requests.get("https://"+link + "/" + i)
-            urladmin = request.url
-            response = request.status_code
-            
-            if response == 200:
+        link = input("hedef link girin örnek(example.com) :")
+        dosya = open("links.txt","r+")
+        dosya_r = dosya.readlines()
+        dosya.close()
+        bulunan=[]
+        try:
+            for  i in dosya_r:
+                request = requests.get("https://"+link + "/" + i)
+                urladmin = request.url
+                response = request.status_code
+                if response == 200:
+                    print("-"*30)
+                    print(Fore.LIGHTGREEN_EX+"admin panel bulundu >",i)
+                    print("link >",urladmin)
+                    print("-"*30)
+                    bulunan.append(urladmin)
+                else:
+                    print(Fore.MAGENTA+"bulunamadı >",i)
+            for buladmin in bulunan:
                 print("-"*30)
-                print("admin panel bulundu >",i)
-                print("link >",urladmin)
-                print("-"*30)
-                bulunan.append(urladmin)
-            else:
-                print("bulunamadı >",i)
-        for buladmin in bulunan:
-            print("-"*30)
-            print("Bulunanlar >", buladmin)  
-    except KeyboardInterrupt:
-        print("durdurdunuz")
-
+                print("Bulunanlar >", buladmin)  
+        except KeyboardInterrupt:
+            print("durdurdunuz")
+    except:
+        return index()
 
 
 # Zararlı url sorgulama
 def link_girme():
-    print("NOT= zararlı bağlantılar USOM (Ulusal Siber Olaylara Müdahale Merkezi) websitesinden sorgulanıyor")
-    link = input("örnek(zararlı.com)linki örnekteki gibi girin :")
+    print(Fore.CYAN+"NOT= zararlı bağlantılar USOM (Ulusal Siber Olaylara Müdahale Merkezi) websitesinden sorgulanıyor")
+    link = input(Fore.WHITE+"örnek(zararlı.com)linki örnekteki gibi girin :")
     request = requests.get("https://www.usom.gov.tr/url-list.txt")
     statu = request.status_code
     response = request.text
@@ -127,23 +133,23 @@ def link_girme():
         return index()
     else:
         print("-"*30)
-        print("Zararlı Değil >",link)
+        print(Fore.LIGHTGREEN_EX+"Zararlı Değil >",link)
         print("-"*30)
-        print("Anasayfaya Yönlediriyorum")
+        print("Anasayfaya dönüyorsunuz")
         time.sleep(2)
         return index()
 
 index()
 # secım kısmı 
 while True:
-    print("""
+    print(Fore.RED+"""
     [1]İp Hakkında Bilgi
     [2]Web sitelerindeki Dosyaları Bulma
     [3]Admin Panel Bulma
     [4]Zararlı Bağlantı Tespiti
     [5]Sistemden cıkma
     """)
-    secım = input("Seciminizi Girin :")
+    secım = input(Fore.LIGHTWHITE_EX+"Seciminizi Girin :")
     if secım == "1":
         ip_info()
     elif secım == "2":
@@ -154,7 +160,7 @@ while True:
         link_girme()
     elif secım =="5":
         c = Figlet(font='slant')
-        print(c.renderText('By By'))
+        print(Fore.LIGHTYELLOW_EX+c.renderText('By By'))
         sys.exit()
     else:
         print("-"*10,"hatalı tuslama tekrar deneyin","-"*10)
