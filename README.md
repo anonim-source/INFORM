@@ -15,6 +15,6 @@
 `python3 inform.py` 
 ## Yazıp Enter Tuşuna Basın Sonra Aşağıdaki Gibi Ekran Gelcek
 ### Siz Burdan Hangi Seceneyi Kullanacaksanız Onu secin ve Talimatları İzleyin
-![anasayfa resmi](https://i.hizliresim.com/s2t9bfl.png)
+![anasayfa resmi](https://i.hizliresim.com/ixepm3c.png)
 
  
