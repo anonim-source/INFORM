@@ -13,7 +13,10 @@ pip install requests
 pip install pyfiglet
 pip install json
 pip install sys
+pip install colorama
 ```
+## yada 
+### pip install -r requirements.txt
 # Nasıl Çalışır
 ## Terminalinizi acıp 
 `python3 inform.py` 
